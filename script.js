@@ -153,78 +153,187 @@ document.addEventListener('click', (e) => {
     }
 });
 
-let currentFloor = 'B1'; 
+let currentFloor = 'B1';
+let animFrameId = null; // 用來停止流動動畫
+
+// 計算節點總距離（像素），換算成公尺與步行時間
+// 地圖 2560px 對應約實際 ~200 公尺（請依實際比例調整 SCALE）
+const MAP_SCALE = 200 / 2560; // 每 px 對應公尺數
+
+function calcRouteStats(nodes) {
+    let totalPx = 0;
+    for (let i = 1; i < nodes.length; i++) {
+        const dx = nodes[i].x - nodes[i-1].x;
+        const dy = nodes[i].y - nodes[i-1].y;
+        totalPx += Math.sqrt(dx*dx + dy*dy);
+    }
+    const meters = Math.round(totalPx * MAP_SCALE);
+    const seconds = Math.round(meters / 1.2); // 步行速度 1.2 m/s
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return { meters, timeStr: mins > 0 ? `${mins} 分 ${secs} 秒` : `${secs} 秒` };
+}
+
+// 在 SVG 上畫起點圓點與終點圓點
+function drawMarkers(nodes, color) {
+    const svg = document.getElementById('svg-layer');
+    // 清除舊的標記
+    svg.querySelectorAll('.route-marker').forEach(el => el.remove());
+
+    const start = nodes[0];
+    const end   = nodes[nodes.length - 1];
+
+    // 起點：白色實心圓 + 外環
+    const startGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    startGroup.setAttribute('class', 'route-marker');
+    const sOuter = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    sOuter.setAttribute('cx', start.x); sOuter.setAttribute('cy', start.y);
+    sOuter.setAttribute('r', 28); sOuter.setAttribute('fill', color); sOuter.setAttribute('opacity', '0.3');
+    const sInner = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    sInner.setAttribute('cx', start.x); sInner.setAttribute('cy', start.y);
+    sInner.setAttribute('r', 16); sInner.setAttribute('fill', '#ffffff');
+    const sLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    sLabel.setAttribute('x', start.x); sLabel.setAttribute('y', start.y - 38);
+    sLabel.setAttribute('text-anchor', 'middle'); sLabel.setAttribute('fill', '#ffffff');
+    sLabel.setAttribute('font-size', '28'); sLabel.setAttribute('font-weight', 'bold');
+    sLabel.textContent = '起';
+    startGroup.append(sOuter, sInner, sLabel);
+
+    // 終點：彩色實心圓 + 旗標文字
+    const endGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    endGroup.setAttribute('class', 'route-marker');
+    const eOuter = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    eOuter.setAttribute('cx', end.x); eOuter.setAttribute('cy', end.y);
+    eOuter.setAttribute('r', 28); eOuter.setAttribute('fill', color); eOuter.setAttribute('opacity', '0.3');
+    const eInner = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    eInner.setAttribute('cx', end.x); eInner.setAttribute('cy', end.y);
+    eInner.setAttribute('r', 16); eInner.setAttribute('fill', color);
+    const eLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    eLabel.setAttribute('x', end.x); eLabel.setAttribute('y', end.y - 38);
+    eLabel.setAttribute('text-anchor', 'middle'); eLabel.setAttribute('fill', color);
+    eLabel.setAttribute('font-size', '28'); eLabel.setAttribute('font-weight', 'bold');
+    eLabel.textContent = '終';
+    endGroup.append(eOuter, eInner, eLabel);
+
+    svg.append(startGroup, endGroup);
+}
+
+// 路線描繪動畫，畫完後轉為流動虛線
+function animateRoute(pathElement, color, onComplete) {
+    // 停止之前的流動動畫
+    if (animFrameId) cancelAnimationFrame(animFrameId);
+
+    const totalLength = pathElement.getTotalLength();
+
+    // 先設定為「從頭描繪」狀態
+    pathElement.style.transition = 'none';
+    pathElement.style.strokeDasharray  = `${totalLength}`;
+    pathElement.style.strokeDashoffset = `${totalLength}`;
+    pathElement.style.stroke = color;
+    pathElement.style.opacity = '1';
+
+    // 強制 reflow 後開始 CSS transition 描繪
+    pathElement.getBoundingClientRect();
+    pathElement.style.transition = `stroke-dashoffset 1.6s cubic-bezier(0.4,0,0.2,1)`;
+    pathElement.style.strokeDashoffset = '0';
+
+    // 描繪結束後啟動流動虛線
+    setTimeout(() => {
+        startFlowAnimation(pathElement, totalLength, color);
+        if (onComplete) onComplete();
+    }, 1700);
+}
+
+function startFlowAnimation(pathElement, totalLength, color) {
+    const dashLen  = 80;
+    const gapLen   = 60;
+    const pattern  = dashLen + gapLen;
+    let offset = 0;
+
+    pathElement.style.transition = 'none';
+    pathElement.style.strokeDasharray = `${dashLen} ${gapLen}`;
+
+    function step() {
+        offset = (offset + 3) % pattern;
+        pathElement.style.strokeDashoffset = -offset;
+        animFrameId = requestAnimationFrame(step);
+    }
+    animFrameId = requestAnimationFrame(step);
+}
 
 function startNav() {
     const pathElement = document.getElementById('route-path');
-    
+
     if (!selectedStation) { alert("⚠️ 請先選擇目的地車站！"); return; }
     if (!currentMode) { alert("⚠️ 請先選擇導航模式（無障礙或一般路線）！"); return; }
 
     const routeInfo = stationRouteMap[selectedStation];
-
-    // 根據樓層 + 模式選擇對應節點
-    let nodes = [];
     const isAccessible = currentMode === 'accessible';
+    const color = isAccessible ? '#2ecc71' : '#4bcffa';
 
-    if (currentFloor === 'B1') {
-        nodes = isAccessible ? b1Nodes : b1NodesGeneral;
-    } else if (currentFloor === 'B2') {
-        nodes = isAccessible ? b2Nodes : b2NodesGeneral;
-    } else if (currentFloor === 'B3') {
-        nodes = isAccessible ? b3Nodes : b3NodesGeneral;
-    }
+    let nodes = [];
+    if (currentFloor === 'B1') nodes = isAccessible ? b1Nodes : b1NodesGeneral;
+    else if (currentFloor === 'B2') nodes = isAccessible ? b2Nodes : b2NodesGeneral;
+    else if (currentFloor === 'B3') nodes = isAccessible ? b3Nodes : b3NodesGeneral;
 
     if (!nodes || nodes.length === 0) {
-        alert(`${currentFloor} 的路線節點尚未設定！`);
-        return;
+        alert(`${currentFloor} 的路線節點尚未設定！`); return;
     }
 
-    // 無障礙：綠色；一般：藍色
-    pathElement.style.stroke = isAccessible ? '#2ecc71' : '#4bcffa';
-    
+    // 計算距離與時間
+    const { meters, timeStr } = calcRouteStats(nodes);
+
+    // 畫路徑
     let d = `M ${nodes[0].x} ${nodes[0].y}`;
-    for (let i = 1; i < nodes.length; i++) {
-        d += ` L ${nodes[i].x} ${nodes[i].y}`;
-    }
+    for (let i = 1; i < nodes.length; i++) d += ` L ${nodes[i].x} ${nodes[i].y}`;
     pathElement.setAttribute('d', d);
-    
-    const nextFloorContainer = document.getElementById('next-floor-container');
-    const nextLabel = isAccessible ? '電梯' : '樓梯/手扶梯';
-    
-    if (currentFloor === 'B1') {
-        nextFloorContainer.style.display = 'block';
-        nextFloorContainer.innerHTML = `<button class="btn btn-success" onclick="goToFloor('B2')">⬇️ 抵達 B1 ${nextLabel}，點擊進入 B2 並繼續導航</button>`;
-    } else if (currentFloor === 'B2') {
-        nextFloorContainer.style.display = 'block';
-        nextFloorContainer.innerHTML = `<button class="btn btn-success" onclick="goToFloor('B3')">⬇️ 抵達 B2 ${nextLabel}，點擊進入 B3 並繼續導航</button>`;
-    } else if (currentFloor === 'B3') {
-        nextFloorContainer.style.display = 'block';
-        nextFloorContainer.innerHTML = `<button class="btn btn-success" style="border-color:#0fb9b1; color:#0fb9b1;" onclick="alert('導航結束')">🎉 已成功引導至 ${routeInfo.line}線 (${routeInfo.dirText}) 月台層！</button>`;
-    }
+
+    // 畫起終點標記
+    drawMarkers(nodes, color);
+
+    // 播放描繪動畫
+    animateRoute(pathElement, color, () => {
+        // 動畫結束後顯示換層按鈕與統計
+        const nextFloorContainer = document.getElementById('next-floor-container');
+        const nextLabel = isAccessible ? '電梯' : '樓梯/手扶梯';
+        const statsHtml = `<div class="route-stats">📏 本段約 ${meters} 公尺　⏱️ 步行約 ${timeStr}</div>`;
+
+        if (currentFloor === 'B1') {
+            nextFloorContainer.style.display = 'block';
+            nextFloorContainer.innerHTML = statsHtml + `<button class="btn btn-success" onclick="goToFloor('B2')">⬇️ 抵達 B1 ${nextLabel}，點擊進入 B2 並繼續導航</button>`;
+        } else if (currentFloor === 'B2') {
+            nextFloorContainer.style.display = 'block';
+            nextFloorContainer.innerHTML = statsHtml + `<button class="btn btn-success" onclick="goToFloor('B3')">⬇️ 抵達 B2 ${nextLabel}，點擊進入 B3 並繼續導航</button>`;
+        } else if (currentFloor === 'B3') {
+            nextFloorContainer.style.display = 'block';
+            nextFloorContainer.innerHTML = statsHtml + `<button class="btn btn-success" style="border-color:#0fb9b1; color:#0fb9b1;" onclick="alert('導航結束！')">🎉 已成功引導至 ${routeInfo.line}線 (${routeInfo.dirText}) 月台層！</button>`;
+        }
+    });
 }
 
 function goToFloor(floor) {
     currentFloor = floor;
-    
+
+    // 停止流動動畫
+    if (animFrameId) { cancelAnimationFrame(animFrameId); animFrameId = null; }
+
     document.getElementById('current-floor-display').innerText = `${floor} 樓層`;
     document.getElementById('main-nav-btn').innerText = `重新導航 (回到起點)`;
-    
     document.getElementById('next-floor-container').style.display = 'none';
-    document.getElementById('route-path').setAttribute('d', '');
+
+    // 清除路線與標記
+    const pathElement = document.getElementById('route-path');
+    pathElement.setAttribute('d', '');
+    pathElement.style.strokeDasharray = '';
+    pathElement.style.strokeDashoffset = '';
+    document.getElementById('svg-layer').querySelectorAll('.route-marker').forEach(el => el.remove());
 
     const mapImg = document.getElementById('map-img');
-    if (floor === 'B1') {
-        mapImg.src = 'taipei_b1.png';
-    } else if (floor === 'B2') {
-        mapImg.src = 'taipei_b2.png'; 
-    } else if (floor === 'B3') {
-        mapImg.src = 'taipei_b3.png'; 
-    }
+    if (floor === 'B1') mapImg.src = 'taipei_b1.png';
+    else if (floor === 'B2') mapImg.src = 'taipei_b2.png';
+    else if (floor === 'B3') mapImg.src = 'taipei_b3.png';
 
-    setTimeout(() => {
-        startNav();
-    }, 100);
+    setTimeout(() => { startNav(); }, 100);
 }
 
 // ===== 縮放與拖曳邏輯 =====
