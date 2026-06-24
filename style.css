@@ -1,0 +1,125 @@
+/* 基礎設定 */
+body { margin: 0; background: #121212; color: #ecf0f1; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+#app { display: flex; flex-direction: column; height: 100vh; }
+
+/* 控制面板設計 */
+#controls { padding: 20px 30px; background: #1e272e; border-bottom: 4px solid #0fb9b1; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 10; }
+.sys-title { margin: 0 0 15px 0; font-size: 22px; color: #0fb9b1; letter-spacing: 1px; }
+.control-group { margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px; }
+.control-group label { font-size: 14px; font-weight: bold; color: #bdc3c7; }
+.btn-group { display: flex; gap: 12px; }
+
+/* 按鍵質感邊框與特效 */
+.btn { 
+    padding: 12px 20px; 
+    background: transparent; 
+    border: 2px solid #4bcffa; 
+    color: #4bcffa; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    font-size: 15px;
+    font-weight: bold; 
+    transition: all 0.3s ease;
+}
+.btn:hover { background: rgba(75, 207, 250, 0.1); }
+.btn.active { background: #4bcffa; color: #1e272e; box-shadow: 0 0 10px rgba(75, 207, 250, 0.5); }
+
+/* 下拉選單 */
+.select-btn { width: 100%; background: #2c3e50; color: #ecf0f1; appearance: none; outline: none; }
+.select-btn:focus { border-color: #0fb9b1; }
+
+/* 開始導航大按鈕 */
+.nav-btn { width: 100%; margin-top: 10px; border-color: #ff3f34; color: #ff3f34; font-size: 18px; padding: 15px; }
+.nav-btn:hover { background: #ff3f34; color: white; box-shadow: 0 0 15px rgba(255, 63, 52, 0.6); }
+
+/* 🌟 新增：換樓層按鈕 (綠色系) */
+.btn-success { width: 100%; border-color: #2ecc71; color: #2ecc71; font-size: 16px; padding: 12px; }
+.btn-success:hover { background: #2ecc71; color: #1e272e; box-shadow: 0 0 15px rgba(46, 204, 113, 0.6); }
+
+/* 地圖滑動區域 */
+#viewport { flex: 1; overflow: auto; cursor: grab; background: #2f3640; }
+#viewport:active { cursor: grabbing; }
+#map-wrapper { position: relative; width: 2560px; height: 2560px; transform-origin: 0 0; }
+#map-img { width: 100%; height: 100%; object-fit: contain; }
+#svg-layer { position: absolute; top: 0; left: 0; width: 2560px; height: 2560px; pointer-events: none; }
+
+ /* 🌟 優化：黑化與現代毛玻璃特效遮罩 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            top: 0; left: 0; 
+            width: 100vw; height: 100vh;
+            background: rgba(10, 10, 10, 0.9); 
+            backdrop-filter: blur(8px);       
+            justify-content: center; 
+            align-items: center;
+        }
+
+        /* 🌟 優化：讓捷運圖維持原圖比例，並適應螢幕 */
+        .modal img { 
+            max-width: 90%; 
+            max-height: 85vh; 
+            object-fit: contain; 
+            border: 3px solid #0fb9b1; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+        }
+
+        /* 右上角關閉按鈕 */
+        .modal-close { 
+            position: absolute; 
+            top: 25px; right: 35px; 
+            color: #4bcffa; 
+            font-size: 45px; 
+            font-weight: bold;
+            cursor: pointer; 
+            transition: transform 0.2s;
+        }
+        .modal-close:hover { transform: scale(1.2); color: #ff3f34; }
+
+        /* 按鈕群組排版 */
+.btn-group { display: flex; gap: 10px; margin-top: 5px; }
+
+/* 路線按鈕基本樣式 */
+.mode-btn {
+    flex: 1;
+    padding: 16px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    letter-spacing: 0.5px;
+}
+
+/* ♿ 無障礙路線：綠色系 */
+#btn-accessible {
+    border-color: #2ecc71;
+    color: #2ecc71;
+}
+#btn-accessible:hover {
+    background: rgba(46, 204, 113, 0.12);
+}
+#btn-accessible.active {
+    background: #2ecc71;
+    color: #1e272e;
+    box-shadow: 0 0 14px rgba(46, 204, 113, 0.6);
+}
+
+/* 🚶 一般路線：藍色系 */
+#btn-general {
+    border-color: #4bcffa;
+    color: #4bcffa;
+}
+#btn-general:hover {
+    background: rgba(75, 207, 250, 0.12);
+}
+#btn-general.active {
+    background: #4bcffa;
+    color: #1e272e;
+    box-shadow: 0 0 14px rgba(75, 207, 250, 0.6);
+}

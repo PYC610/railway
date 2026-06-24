@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北車站無障礙導航 - finalfriday</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="controls">
+            <h2 class="sys-title">台北車站無障礙導航 (<span id="current-floor-display">B1 樓層</span>)</h2>
+            
+            <div class="control-group" style="margin-bottom: 20px;">
+                <button class="btn" style="width: 100%; border-color: #4bcffa; color: #4bcffa;" onclick="openMapModal()">
+                    🗺️ 查看台北捷運路網圖
+                </button>
+            </div>
+
+            <div class="control-group">
+                <label for="station-select">1. 請選擇目的地車站：</label>
+                <select id="station-select" class="btn select-btn">
+                    <option value="" disabled selected>-- 請選擇捷運站 --</option>
+                    <optgroup label="淡水信義線 (紅線)">
+                        <option value="信義安和">信義安和 (往象山)</option>
+                        <option value="象山">象山 (往象山)</option>
+                        <option value="台北101/世貿">台北101/世貿 (往象山)</option>
+                        <option value="中山">中山 (往淡水)</option>
+                        <option value="士林">士林 (往淡水)</option>
+                        <option value="淡水">淡水 (往淡水)</option>
+                    </optgroup>
+                    <optgroup label="板南線 (藍線)">
+                        <option value="市政府">市政府 (往南港展覽館)</option>
+                        <option value="南港展覽館">南港展覽館 (往南港展覽館)</option>
+                        <option value="西門">西門 (往頂埔)</option>
+                        <option value="龍山寺">龍山寺 (往頂埔)</option>
+                        <option value="頂埔">頂埔 (往頂埔)</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="route-type">2. 請選擇導航模式：</label>
+                <div class="btn-group">
+                <button id="btn-accessible" class="btn mode-btn" onclick="setMode('accessible')">♿ 無障礙路線</button>
+                <button id="btn-general" class="btn mode-btn" onclick="setMode('general')">🚶 一般路線</button>
+                </div>
+            </div>  
+
+            <button id="main-nav-btn" class="btn nav-btn" onclick="startNav()">開始無障礙導航 (高鐵閘門 → B1 電梯)</button>
+
+            <div id="next-floor-container" style="display: none; margin-top: 15px;"></div>
+        </div>
+
+        <div id="viewport">
+            <div id="map-wrapper">
+                <img id="map-img" src="taipei_b1.png" alt="台北車站地圖">
+                <svg id="svg-layer">
+                    <path id="route-path" d="" fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div id="mapModal" class="modal" onclick="closeMapModal()">
+        <span class="modal-close">&times;</span>
+        <img src="https://web.metro.taipei/pages/assets/images/routemap2023n.png" alt="捷運圖放大">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
