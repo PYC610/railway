@@ -18,26 +18,23 @@
             </div>
 
             <div class="control-group">
-                <label for="station-select">1. 請選擇目的地車站：</label>
-                <select id="station-select" class="btn select-btn">
-                    <option value="" disabled selected>-- 請選擇捷運站 --</option>
-                    <optgroup label="淡水信義線 (紅線)">
-                        <option value="信義安和">信義安和 (往象山)</option>
-                        <option value="象山">象山 (往象山)</option>
-                        <option value="台北101/世貿">台北101/世貿 (往象山)</option>
-                        <option value="中山">中山 (往淡水)</option>
-                        <option value="士林">士林 (往淡水)</option>
-                        <option value="淡水">淡水 (往淡水)</option>
-                    </optgroup>
-                    <optgroup label="板南線 (藍線)">
-                        <option value="市政府">市政府 (往南港展覽館)</option>
-                        <option value="南港展覽館">南港展覽館 (往南港展覽館)</option>
-                        <option value="西門">西門 (往頂埔)</option>
-                        <option value="龍山寺">龍山寺 (往頂埔)</option>
-                        <option value="頂埔">頂埔 (往頂埔)</option>
-                    </optgroup>
-                </select>
+                <label for="station-input">1. 請輸入或選擇目的地車站：</label>
+                <div class="search-wrapper">
+                    <input 
+                        id="station-input" 
+                        class="btn station-input" 
+                        type="text" 
+                        placeholder="🔍 輸入站名，例：西門" 
+                        autocomplete="off"
+                        oninput="filterStations(this.value)"
+                        onfocus="showDropdown()"
+                    />
+                    <div id="station-dropdown" class="station-dropdown"></div>
+                </div>
+                <!-- 自動判斷方向顯示 -->
+                <div id="direction-badge" class="direction-badge" style="display:none;"></div>
             </div>
+
             <div class="control-group">
                 <label for="route-type">2. 請選擇導航模式：</label>
                 <div class="btn-group">
