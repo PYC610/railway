@@ -48,7 +48,7 @@ const b2NodesGeneral = [
 // 🌟 修正：已更換為你提供的新 B3 實際無障礙動線座標
 const b3Nodes = [
     {id: "b3_elevator", x: 1577, y: 1895},   // B3 起點電梯
-    {id: "b3_bl_road3", x: 1521, y: 1856},   // 節點 2
+    {id: "b3_bl_road3", x: 1577, y: 1856},   // 節點 2
     {id: "b3_bl_road10", x: 1257, y: 1856}   // 節點 3
 ];
 
@@ -152,7 +152,73 @@ function goToFloor(floor) {
     }, 100);
 }
 
-// 🌟 新增：控制捷運路線圖彈出放大與關閉的邏輯
+// ===== 縮放與拖曳邏輯 =====
+let scale = 0.3;          // 初始縮放比例（地圖很大，預設縮小）
+const MIN_SCALE = 0.1;
+const MAX_SCALE = 2.0;
+
+const viewport = document.getElementById('viewport') || (() => {
+    // 等 DOM 載入後才綁定
+})();
+
+function applyTransform() {
+    document.getElementById('map-wrapper').style.transform = `scale(${scale})`;
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    const viewport = document.getElementById('viewport');
+    const wrapper  = document.getElementById('map-wrapper');
+
+    // 初始縮放
+    applyTransform();
+
+    // ── 滾輪縮放 ──
+    viewport.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const rect = viewport.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left + viewport.scrollLeft;
+        const mouseY = e.clientY - rect.top  + viewport.scrollTop;
+
+        const delta = e.deltaY > 0 ? 0.9 : 1.1;
+        const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * delta));
+
+        // 以滑鼠為中心縮放
+        viewport.scrollLeft = mouseX * (newScale / scale) - (e.clientX - rect.left);
+        viewport.scrollTop  = mouseY * (newScale / scale) - (e.clientY - rect.top);
+
+        scale = newScale;
+        applyTransform();
+    }, { passive: false });
+
+    // ── 觸控雙指縮放 (Pinch) ──
+    let lastDist = null;
+
+    viewport.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+            lastDist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+        }
+    }, { passive: true });
+
+    viewport.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2 && lastDist !== null) {
+            e.preventDefault();
+            const dist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            const delta = dist / lastDist;
+            scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * delta));
+            lastDist = dist;
+            applyTransform();
+        }
+    }, { passive: false });
+
+    viewport.addEventListener('touchend', () => { lastDist = null; });
+});
+// ===========================
 function openMapModal() {
     document.getElementById('mapModal').style.display = 'flex';
 }
