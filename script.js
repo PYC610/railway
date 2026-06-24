@@ -60,27 +60,102 @@ const b3NodesGeneral = [
 ];
 
 // 捷運車站決策資料庫
-const stationRouteMap = {
-    // 淡水信義線 (R)
-    "信義安和": { line: "R", direction: "xiangshan", dirText: "往 象山" },
-    "象山":     { line: "R", direction: "xiangshan", dirText: "往 象山" },
-    "台北101/世帥": { line: "R", direction: "xiangshan", dirText: "往 象山" },
-    "中山":     { line: "R", direction: "tamsui",    dirText: "往 淡水" },
-    "士林":     { line: "R", direction: "tamsui",    dirText: "往 淡水" },
-    "淡水":     { line: "R", direction: "tamsui",    dirText: "往 淡水" },
-    
-    // 板南線 (BL)
-    "市政府":   { line: "BL", direction: "nangang",  dirText: "往 南港展覽館" },
-    "南港展覽館": { line: "BL", direction: "nangang",  dirText: "往 南港展覽館" },
-    "西門":     { line: "BL", direction: "dingpu",   dirText: "往 頂埔" },
-    "龍山寺":   { line: "BL", direction: "dingpu",   dirText: "往 頂埔" },
-    "頂埔":     { line: "BL", direction: "dingpu",   dirText: "往 頂埔" }
-};
+// 板南線完整站序（從頂埔到南港展覽館），台北站 index = 15
+// 台北站左邊（index < 15）→ 往南港展覽館；右邊（index > 15）→ 往頂埔
+const BL_STATIONS_ORDERED = [
+    "頂埔", "永寧", "土城", "海山", "亞東醫院",
+    "府中", "板橋", "新埔", "江子翠", "新莊",
+    "三重", "菜寮", "三民高中", "徐匯中學", "三重國小",
+    "台北橋", "大橋頭", "台北車站",  // index 17 = 台北
+    "善導寺", "忠孝新生", "忠孝復興", "忠孝敦化",
+    "國父紀念館", "市政府", "永春", "後山埤",
+    "昆陽", "南港", "南港展覽館"
+];
+// 台北車站在板南線的 index
+const TAIPEI_INDEX = BL_STATIONS_ORDERED.indexOf("台北車站"); // 17
+
+const stationRouteMap = {};
+BL_STATIONS_ORDERED.forEach((name, idx) => {
+    if (name === "台北車站") return; // 出發站，跳過
+    const toNangang = idx > TAIPEI_INDEX;
+    stationRouteMap[name] = {
+        line: "BL",
+        direction: toNangang ? "nangang" : "dingpu",
+        dirText: toNangang ? "往 南港展覽館" : "往 頂埔"
+    };
+});
+
+// ── 搜尋 UI 邏輯 ──
+let selectedStation = "";
+
+function getStationList() {
+    return BL_STATIONS_ORDERED.filter(s => s !== "台北車站");
+}
+
+function filterStations(query) {
+    const list = query.trim() === ""
+        ? getStationList()
+        : getStationList().filter(s => s.includes(query.trim()));
+    renderDropdown(list);
+    // 若輸入完全符合某一站，自動選取
+    const exact = getStationList().find(s => s === query.trim());
+    if (exact) selectStation(exact, false);
+    else clearDirection();
+}
+
+function showDropdown() {
+    renderDropdown(getStationList());
+}
+
+function renderDropdown(list) {
+    const dd = document.getElementById('station-dropdown');
+    if (list.length === 0) {
+        dd.innerHTML = '<div class="dd-item dd-empty">找不到符合車站</div>';
+    } else {
+        dd.innerHTML = list.map(s => {
+            const info = stationRouteMap[s];
+            const tag = info.direction === 'nangang'
+                ? `<span class="dd-dir nangang">往南港展覽館 ▶</span>`
+                : `<span class="dd-dir dingpu">◀ 往頂埔</span>`;
+            return `<div class="dd-item" onclick="selectStation('${s}')">${s} ${tag}</div>`;
+        }).join('');
+    }
+    dd.style.display = 'block';
+}
+
+function selectStation(name, updateInput = true) {
+    selectedStation = name;
+    if (updateInput) {
+        document.getElementById('station-input').value = name;
+    }
+    document.getElementById('station-dropdown').style.display = 'none';
+
+    // 顯示方向 badge
+    const info = stationRouteMap[name];
+    const badge = document.getElementById('direction-badge');
+    const isNangang = info.direction === 'nangang';
+    badge.style.display = 'block';
+    badge.className = 'direction-badge ' + (isNangang ? 'nangang' : 'dingpu');
+    badge.innerHTML = isNangang
+        ? `🚇 板南線　<strong>${name}</strong>　<span>往 南港展覽館 ▶</span>`
+        : `🚇 板南線　<span>◀ 往 頂埔</span>　<strong>${name}</strong>`;
+}
+
+function clearDirection() {
+    selectedStation = "";
+    document.getElementById('direction-badge').style.display = 'none';
+}
+
+// 點擊其他地方關閉下拉
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.search-wrapper')) {
+        document.getElementById('station-dropdown').style.display = 'none';
+    }
+});
 
 let currentFloor = 'B1'; 
 
 function startNav() {
-    const selectedStation = document.getElementById('station-select').value;
     const pathElement = document.getElementById('route-path');
     
     if (!selectedStation) { alert("⚠️ 請先選擇目的地車站！"); return; }
