@@ -115,6 +115,18 @@ body { margin: 0; background: #121212; color: #ecf0f1; font-family: 'Helvetica N
 .btn-success { width: 100%; border-color: #2ecc71; color: #2ecc71; font-size: 16px; padding: 12px; }
 .btn-success:hover { background: #2ecc71; color: #1e272e; box-shadow: 0 0 15px rgba(46, 204, 113, 0.6); }
 
+/* 距離與時間統計列 */
+.route-stats {
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    background: rgba(15, 185, 177, 0.08);
+    border: 1px solid rgba(15, 185, 177, 0.4);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #0fb9b1;
+    letter-spacing: 0.5px;
+}
+
 /* 右側地圖區域（佔剩餘全部空間） */
 #viewport { flex: 1; overflow: auto; cursor: grab; background: #2f3640; }
 #viewport:active { cursor: grabbing; }
