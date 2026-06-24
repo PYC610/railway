@@ -48,7 +48,7 @@ const b2NodesGeneral = [
 // 🌟 修正：已更換為你提供的新 B3 實際無障礙動線座標
 const b3Nodes = [
     {id: "b3_elevator", x: 1577, y: 1895},   // B3 起點電梯
-    {id: "b3_bl_road3", x: 1577, y: 1856},   // 節點 2
+    {id: "b3_bl_road3", x: 1521, y: 1856},   // 節點 2
     {id: "b3_bl_road10", x: 1257, y: 1856}   // 節點 3
 ];
 
