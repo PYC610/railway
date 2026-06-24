@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>台北車站無障礙導航 - finalfriday</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="controls">
+            <h2 class="sys-title">台北車站無障礙導航 (<span id="current-floor-display">B1 樓層</span>)</h2>
+            
+            <div class="control-group" style="margin-bottom: 20px;">
+                <button class="btn" style="width: 100%; border-color: #4bcffa; color: #4bcffa;" onclick="openMapModal()">
+                    🗺️ 查看台北捷運路網圖
+                </button>
+            </div>
+
+            <div class="control-group">
+                <label for="station-input">1. 請輸入或選擇目的地車站：</label>
+                <div class="search-wrapper">
+                    <input 
+                        id="station-input" 
+                        class="btn station-input" 
+                        type="text" 
+                        placeholder="🔍 輸入站名，例：西門" 
+                        autocomplete="off"
+                        oninput="filterStations(this.value)"
+                        onfocus="showDropdown()"
+                    />
+                    <div id="station-dropdown" class="station-dropdown"></div>
+                </div>
+                <!-- 自動判斷方向顯示 -->
+                <div id="direction-badge" class="direction-badge" style="display:none;"></div>
+            </div>
+
+            <div class="control-group">
+                <label for="route-type">2. 請選擇導航模式：</label>
+                <div class="btn-group">
+                <button id="btn-accessible" class="btn mode-btn" onclick="setMode('accessible')">♿ 無障礙路線</button>
+                <button id="btn-general" class="btn mode-btn" onclick="setMode('general')">🚶 一般路線</button>
+                </div>
+            </div>  
+
+            <button id="main-nav-btn" class="btn nav-btn" onclick="startNav()">開始無障礙導航 (高鐵閘門 → B1 電梯)</button>
+
+            <div id="next-floor-container" style="display: none; margin-top: 15px;"></div>
+        </div>
+
+        <div id="viewport">
+            <div id="map-wrapper">
+                <img id="map-img" src="taipei_b1.png" alt="台北車站地圖">
+                <svg id="svg-layer">
+                    <path id="route-path" d="" fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div id="mapModal" class="modal" onclick="closeMapModal()">
+        <span class="modal-close">&times;</span>
+        <img src="https://web.metro.taipei/pages/assets/images/routemap2023n.png" alt="捷運圖放大">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
