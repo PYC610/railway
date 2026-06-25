@@ -340,6 +340,8 @@ function startNav() {
         const nextFloorContainer = document.getElementById('next-floor-container');
         nextFloorContainer.style.display = 'block';
         nextFloorContainer.innerHTML = statsHtml;
+        // 在 startNav() 函數的結尾處，應該要有一行：
+        document.getElementById('reset-nav-btn').style.display = 'block';
     });
 }
 
@@ -549,4 +551,36 @@ function toggleSidebar() {
     } else {
         toggleBtn.innerText = '◀'; // 變成收合箭頭
     }
+}
+
+function resetNavigation() {
+    // 1. 清除搜尋欄與選取狀態
+    document.getElementById('station-input').value = "";
+    selectedStation = "";
+    
+    // 2. 隱藏 UI 元素
+    document.getElementById('direction-badge').style.display = 'none';
+    document.getElementById('next-floor-container').style.display = 'none';
+    document.getElementById('reset-nav-btn').style.display = 'none';
+    
+    // 3. 隱藏並清除地圖路徑與標記
+    const pathElement = document.getElementById('route-path');
+    pathElement.setAttribute('d', '');
+    document.getElementById('svg-layer').querySelectorAll('.route-marker').forEach(el => el.remove());
+    
+    // 4. 重置狀態
+    isNavigating = false;
+    currentMode = '';
+    currentSubMode = '';
+    
+    // 5. 重置樓層回到 B1
+    if (currentFloor !== 'B1') {
+        changeFloor(- (['B1', 'B2', 'B3'].indexOf(currentFloor))); 
+    }
+    
+    // 6. 清除按鈕選取狀態
+    document.querySelectorAll('.mode-btn, .sub-mode-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById('general-route-options').style.display = 'none';
+    
+    console.log("導航已重設");
 }
