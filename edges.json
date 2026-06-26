@@ -1,0 +1,1708 @@
+{
+  "edges": [
+    {
+      "from": "b1b_hsr_gate4",
+      "to": "b1b_s_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1b_s_road3",
+      "to": "b1b_hsr_gate4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1b_s_road3",
+      "to": "b1c_rampst",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampst",
+      "to": "b1b_s_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1b_s_road3",
+      "to": "b1c_stair1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_stair1",
+      "to": "b1b_s_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_stair1",
+      "to": "b1c_road1",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b1c_road1",
+      "to": "b1c_stair1",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b1c_rampst",
+      "to": "b1c_rampw1",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampw1",
+      "to": "b1c_rampst",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampw1",
+      "to": "b1c_rampw2",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampw2",
+      "to": "b1c_rampw1",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampw2",
+      "to": "b1c_rampw3",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampw3",
+      "to": "b1c_rampw2",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampw3",
+      "to": "b1c_rampw4",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampw4",
+      "to": "b1c_rampw3",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_rampw4",
+      "to": "b1c_ramped",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_ramped",
+      "to": "b1c_rampw4",
+      "type": "ramp",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_ramped",
+      "to": "b1c_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road1",
+      "to": "b1c_ramped",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road1",
+      "to": "b1c_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road2",
+      "to": "b1c_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road2",
+      "to": "b1c_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road4",
+      "to": "b1c_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road2",
+      "to": "b1c_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road5",
+      "to": "b1c_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road2",
+      "to": "b1c_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road6",
+      "to": "b1c_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road2",
+      "to": "b1d_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road4",
+      "to": "b1c_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road3",
+      "to": "b1c_elevator",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_elevator",
+      "to": "b1c_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road3",
+      "to": "b1c_stair3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_stair3",
+      "to": "b1c_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road4",
+      "to": "b1c_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road3",
+      "to": "b1c_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road4",
+      "to": "b1c_stair2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_stair2",
+      "to": "b1c_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road5",
+      "to": "b1c_exit",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_exit",
+      "to": "b1c_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_road6",
+      "to": "b1d_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road1",
+      "to": "b1c_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_stair3",
+      "to": "b1c_stair2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1c_stair2",
+      "to": "b1c_stair3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road1",
+      "to": "b1d_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road2",
+      "to": "b1d_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road1",
+      "to": "b1d_exit1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_exit1",
+      "to": "b1d_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road2",
+      "to": "b1d_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road3",
+      "to": "b1d_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road2",
+      "to": "b1d_stair2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_stair2",
+      "to": "b1d_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road2",
+      "to": "b1d_elevator1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_elevator1",
+      "to": "b1d_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road2",
+      "to": "b1d_elevator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_elevator2",
+      "to": "b1d_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road3",
+      "to": "b1d_road7",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road7",
+      "to": "b1d_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road3",
+      "to": "b1d_road8",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road8",
+      "to": "b1d_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road3",
+      "to": "b1d_stair1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_stair1",
+      "to": "b1d_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road3",
+      "to": "b1d_elevator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_elevator2",
+      "to": "b1d_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road3",
+      "to": "b1d_elevator3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_elevator3",
+      "to": "b1d_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road4",
+      "to": "b1d_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road3",
+      "to": "b1d_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road4",
+      "to": "b1d_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road5",
+      "to": "b1d_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road4",
+      "to": "b1d_road10",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road10",
+      "to": "b1d_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road4",
+      "to": "b1d_exit4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_exit4",
+      "to": "b1d_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road5",
+      "to": "b1d_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road6",
+      "to": "b1d_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road5",
+      "to": "b1d_elevator4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_elevator4",
+      "to": "b1d_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road6",
+      "to": "b1d_stair6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_stair6",
+      "to": "b1d_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road6",
+      "to": "b1d_exit5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_exit5",
+      "to": "b1d_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road7",
+      "to": "b1d_exit3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_exit3",
+      "to": "b1d_road7",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road8",
+      "to": "b1d_road9",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road9",
+      "to": "b1d_road8",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road9",
+      "to": "b1d_road10",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road10",
+      "to": "b1d_road9",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road9",
+      "to": "b1d_exit2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_exit2",
+      "to": "b1d_road9",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road10",
+      "to": "b1d_stair4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_stair4",
+      "to": "b1d_road10",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_escalator1",
+      "to": "b1d_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_escalator2",
+      "to": "b1d_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_escalator3",
+      "to": "b1d_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_escalator3",
+      "to": "b1d_road10",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_escalator4",
+      "to": "b1d_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_escalator5",
+      "to": "b1d_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road1",
+      "to": "b2_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road2",
+      "to": "b2_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road1",
+      "to": "b2_elevator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_elevator2",
+      "to": "b2_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road2",
+      "to": "b2_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road3",
+      "to": "b2_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road2",
+      "to": "b2_bl_entrance1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_entrance1",
+      "to": "b2_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road3",
+      "to": "b2_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road4",
+      "to": "b2_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road3",
+      "to": "b2_stair2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_stair2",
+      "to": "b2_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road3",
+      "to": "b2_escalator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road3",
+      "to": "b2_bl_entrance2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_entrance2",
+      "to": "b2_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_stair1",
+      "to": "b2_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road4",
+      "to": "b2_stair1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_stair1",
+      "to": "b2_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road4",
+      "to": "b2_escalator1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road5",
+      "to": "b2_stair3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_stair3",
+      "to": "b2_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road5",
+      "to": "b2_stair4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_stair4",
+      "to": "b2_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road5",
+      "to": "b2_elevator4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_elevator4",
+      "to": "b2_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road5",
+      "to": "b2_bl_entrance3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_entrance3",
+      "to": "b2_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road5",
+      "to": "b2_bl_entrance4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_entrance4",
+      "to": "b2_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road1",
+      "to": "b2_bl_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road2",
+      "to": "b2_bl_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road1",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_bl_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road1",
+      "to": "b2_bl_stair1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_stair1",
+      "to": "b2_bl_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road1",
+      "to": "b2_elevator1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_elevator1",
+      "to": "b2_bl_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road1",
+      "to": "b2_bl_escalator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road2",
+      "to": "b2_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road5",
+      "to": "b2_bl_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road2",
+      "to": "b2_bl_escalator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road3",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_bl_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road3",
+      "to": "b2_bl_stair3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_stair3",
+      "to": "b2_bl_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road3",
+      "to": "b2_bl_escalator4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_escalator4",
+      "to": "b2_bl_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road3",
+      "to": "b2_bl_entrance1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_entrance1",
+      "to": "b2_bl_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road3",
+      "to": "b2_bl_entrance2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_entrance2",
+      "to": "b2_bl_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road5",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_bl_stair3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_stair3",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_bl_stair4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_stair4",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_bl_stair5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_stair5",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_bl_escalator5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_escalator5",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_bl_escalator6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_escalator6",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road4",
+      "to": "b2_elevator3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_elevator3",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road5",
+      "to": "b2_bl_stair2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_stair2",
+      "to": "b2_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road5",
+      "to": "b2_bl_stair6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_stair6",
+      "to": "b2_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road5",
+      "to": "b2_bl_escalator7",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_escalator7",
+      "to": "b2_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road5",
+      "to": "b2_bl_entrance3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_entrance3",
+      "to": "b2_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_road5",
+      "to": "b2_bl_entrance4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_entrance4",
+      "to": "b2_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_escalator1",
+      "to": "b2_bl_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_escalator3",
+      "to": "b2_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_escalator3",
+      "to": "b2_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road1",
+      "to": "b3_bl_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road2",
+      "to": "b3_bl_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road1",
+      "to": "b3_bl_stair1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_stair1",
+      "to": "b3_bl_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road1",
+      "to": "b3_bl_escalator1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_escalator1",
+      "to": "b3_bl_road1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road2",
+      "to": "b3_bl_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road3",
+      "to": "b3_bl_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road2",
+      "to": "b3_bl_stair2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_stair2",
+      "to": "b3_bl_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road2",
+      "to": "b3_bl_escalator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_escalator2",
+      "to": "b3_bl_road2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road3",
+      "to": "b3_bl_elevator",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_elevator",
+      "to": "b3_bl_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road4",
+      "to": "b3_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road5",
+      "to": "b3_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road4",
+      "to": "b3_bl_elevator",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_elevator",
+      "to": "b3_bl_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road5",
+      "to": "b3_bl_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road6",
+      "to": "b3_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road5",
+      "to": "b3_bl_stair3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_stair3",
+      "to": "b3_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road5",
+      "to": "b3_bl_escalator3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_escalator3",
+      "to": "b3_bl_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road6",
+      "to": "b3_bl_stair4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_stair4",
+      "to": "b3_bl_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road6",
+      "to": "b3_bl_escalator4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_escalator4",
+      "to": "b3_bl_road6",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road7",
+      "to": "b3_bl_road8",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road8",
+      "to": "b3_bl_road7",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road7",
+      "to": "b3_bl_stair1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_stair1",
+      "to": "b3_bl_road7",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road7",
+      "to": "b3_bl_escalator1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_escalator1",
+      "to": "b3_bl_road7",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road8",
+      "to": "b3_bl_road9",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road9",
+      "to": "b3_bl_road8",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road8",
+      "to": "b3_bl_stair2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_stair2",
+      "to": "b3_bl_road8",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road8",
+      "to": "b3_bl_escalator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_escalator2",
+      "to": "b3_bl_road8",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road9",
+      "to": "b3_bl_elevator",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_elevator",
+      "to": "b3_bl_road9",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road10",
+      "to": "b3_bl_road11",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road11",
+      "to": "b3_bl_road10",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road10",
+      "to": "b3_bl_elevator",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_elevator",
+      "to": "b3_bl_road10",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road11",
+      "to": "b3_bl_road12",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road12",
+      "to": "b3_bl_road11",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road11",
+      "to": "b3_bl_stair3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_stair3",
+      "to": "b3_bl_road11",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road11",
+      "to": "b3_bl_escalator3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_escalator3",
+      "to": "b3_bl_road11",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road12",
+      "to": "b3_bl_stair4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_stair4",
+      "to": "b3_bl_road12",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_road12",
+      "to": "b3_bl_escalator4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_escalator4",
+      "to": "b3_bl_road12",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_stair3",
+      "to": "b2_stair1",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_stair1",
+      "to": "b1d_stair3",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b1d_stair4",
+      "to": "b2_stair2",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_stair2",
+      "to": "b1d_stair4",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b1d_stair5",
+      "to": "b2_stair3",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_stair3",
+      "to": "b1d_stair5",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b1d_stair6",
+      "to": "b2_stair4",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_stair4",
+      "to": "b1d_stair6",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_escalator1",
+      "to": "b1d_escalator2",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_escalator2",
+      "to": "b1d_escalator3",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_escalator3",
+      "to": "b1d_escalator4",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_escalator4",
+      "to": "b1d_escalator5",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b1d_elevator2",
+      "to": "b2_elevator2",
+      "type": "elevator",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_elevator2",
+      "to": "b1d_elevator2",
+      "type": "elevator",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_elevator4",
+      "to": "b2_elevator4",
+      "type": "elevator",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_elevator4",
+      "to": "b1d_elevator4",
+      "type": "elevator",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_bl_stair3",
+      "to": "b3_bl_stair1",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b3_bl_stair1",
+      "to": "b2_bl_stair3",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_bl_stair4",
+      "to": "b3_bl_stair2",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b3_bl_stair2",
+      "to": "b2_bl_stair4",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_bl_stair5",
+      "to": "b3_bl_stair3",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b3_bl_stair3",
+      "to": "b2_bl_stair5",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_bl_stair6",
+      "to": "b3_bl_stair4",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b3_bl_stair4",
+      "to": "b2_bl_stair6",
+      "type": "stair",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_bl_escalator4",
+      "to": "b3_bl_escalator1",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b3_bl_escalator1",
+      "to": "b2_bl_escalator4",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_bl_escalator5",
+      "to": "b3_bl_escalator2",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b3_bl_escalator2",
+      "to": "b2_bl_escalator5",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_bl_escalator6",
+      "to": "b3_bl_escalator3",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b3_bl_escalator3",
+      "to": "b2_bl_escalator6",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_bl_escalator7",
+      "to": "b3_bl_escalator4",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b3_bl_escalator4",
+      "to": "b2_bl_escalator7",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_elevator3",
+      "to": "b3_bl_elevator",
+      "type": "elevator",
+      "isAccessible": true
+    },
+    {
+      "from": "b3_bl_elevator",
+      "to": "b2_elevator3",
+      "type": "elevator",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road2",
+      "to": "b1d_escalator1",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road2",
+      "to": "b1d_escalator2",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road4",
+      "to": "b1d_escalator3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road10",
+      "to": "b1d_escalator3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road4",
+      "to": "b1d_escalator4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_road6",
+      "to": "b1d_escalator5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b1d_escalator2",
+      "to": "b2_escalator1",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b1d_escalator3",
+      "to": "b2_escalator2",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b1d_escalator4",
+      "to": "b2_escalator3",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b1d_escalator5",
+      "to": "b2_escalator4",
+      "type": "escalator",
+      "isAccessible": false
+    },
+    {
+      "from": "b2_escalator1",
+      "to": "b2_road4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_escalator2",
+      "to": "b2_road3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road5",
+      "to": "b2_escalator3",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_escalator3",
+      "to": "b2_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road5",
+      "to": "b2_escalator4",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_escalator4",
+      "to": "b2_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road4",
+      "to": "b2_road5",
+      "type": "flat",
+      "isAccessible": true
+    },
+    {
+      "from": "b2_road5",
+      "to": "b2_road4",
+      "type": "flat",
+      "isAccessible": true
+    }
+  ]
+}
