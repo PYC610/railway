@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1e272e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>台北車站無障礙導航 - finalfriday</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="controls">
+            <button id="toggle-sidebar-btn" class="toggle-btn" onclick="toggleSidebar()">◀</button>
+            
+            <div id="controls-content">
+                <h2 class="sys-title">台北車站無障礙導航</h2>
+                
+                <div class="control-group">
+                    <label for="origin-input">1. 請選擇您的起點位置：</label>
+                    <div class="origin-search-wrapper">
+                        <input 
+                            id="origin-input" 
+                            class="btn station-input" 
+                            type="text" 
+                            placeholder="🚏 選擇起點出口或入口" 
+                            autocomplete="off"
+                            oninput="filterOrigins(this.value)"
+                            onfocus="showOriginDropdown()"
+                        />
+                        <div id="origin-dropdown" class="station-dropdown"></div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="dest-input">2. 請選擇目的地（出口或月台方向）：</label>
+                    <div class="dest-search-wrapper">
+                        <input 
+                            id="dest-input" 
+                            class="btn station-input" 
+                            type="text" 
+                            placeholder="🎯 選擇目的地出口或月台" 
+                            autocomplete="off"
+                            oninput="filterDests(this.value)"
+                            onfocus="showDestDropdown()"
+                        />
+                        <div id="dest-dropdown" class="station-dropdown"></div>
+                    </div>
+                    <div id="direction-badge" class="direction-badge" style="display:none;"></div>
+                </div>
+
+                <div class="control-group">
+                    <label for="route-type">3. 請選擇導航模式：</label>
+                    <div class="btn-group">
+                        <button id="btn-accessible" class="btn mode-btn" onclick="setMode('accessible')">♿ 無障礙路線</button>
+                        <button id="btn-general" class="btn mode-btn" onclick="setMode('general')">🚶 一般路線</button>
+                    </div>
+                </div>  
+
+                <div id="general-route-options" class="control-group" style="display: none; margin-top: 10px;">
+                    <label>選擇一般路線方式：</label>
+                    <div class="btn-group" style="flex-wrap: wrap;">
+                        <button id="btn-sub-stairs" class="btn sub-mode-btn" onclick="setSubMode('stairs')">樓梯</button>
+                        <button id="btn-sub-escalator" class="btn sub-mode-btn" onclick="setSubMode('escalator')">自動扶梯</button>
+                        <button id="btn-sub-elevator" class="btn sub-mode-btn" onclick="setSubMode('elevator')">電梯</button>
+                        <button id="btn-sub-best" class="btn sub-mode-btn" onclick="setSubMode('best')">最佳路線</button>
+                    </div>
+                </div>
+
+                <button id="main-nav-btn" class="btn nav-btn" onclick="startNav()">開始導航</button>
+
+                <div id="floor-controls" class="floor-controls">
+                    <button class="btn floor-btn" onclick="changeFloor(-1)">▲ 上一層</button>
+                    <span id="current-floor-display" class="floor-display">B1 樓層</span>
+                    <button class="btn floor-btn" onclick="changeFloor(1)">▼ 下一層</button>
+                </div>
+
+                <div id="next-floor-container" style="display: none; margin-top: 15px;"></div>
+                
+                <button id="reset-nav-btn" class="btn reset-btn" style="display: none; margin-top: 10px;" onclick="resetNavigation()">重設路線</button>
+
+                <div class="facility-panel">
+                    <div class="facility-panel-title" onclick="toggleFacilityPanel()">
+                        <span>🗺️ 顯示無障礙設施</span>
+                        <span id="facility-arrow">▶</span>
+                    </div>
+                    <div id="facility-checkboxes" class="facility-checkboxes" style="display:none;">
+                        <label class="facility-item">
+                            <input type="checkbox" id="fac-elevator" onchange="renderFacilityMarkers()">
+                            <span class="fac-dot fac-elevator"></span>電梯
+                        </label>
+                        <label class="facility-item">
+                            <input type="checkbox" id="fac-stair" onchange="renderFacilityMarkers()">
+                            <span class="fac-dot fac-stair"></span>樓梯
+                        </label>
+                        <label class="facility-item">
+                            <input type="checkbox" id="fac-escalator" onchange="renderFacilityMarkers()">
+                            <span class="fac-dot fac-escalator"></span>手扶梯
+                        </label>
+                        <label class="facility-item">
+                            <input type="checkbox" id="fac-ramp" onchange="renderFacilityMarkers()">
+                            <span class="fac-dot fac-ramp"></span>坡道
+                        </label>
+                        <label class="facility-item">
+                            <input type="checkbox" id="fac-exit" onchange="renderFacilityMarkers()">
+                            <span class="fac-dot fac-exit"></span>出入口
+                        </label>
+                        <label class="facility-item">
+                            <input type="checkbox" id="fac-info" onchange="renderFacilityMarkers()">
+                            <span class="fac-dot fac-info"></span>詢問處
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="viewport">
+            <div id="map-wrapper">
+                <img id="map-img" src="taipei_b1.png" alt="台北車站地圖">
+                <svg id="svg-layer">
+                    <defs>
+                        <marker id="arrowhead-green" markerWidth="30" markerHeight="30" refX="25" refY="15" orient="auto">
+                            <polygon points="0,0 30,15 0,30" fill="#2ecc71" opacity="0.9"/>
+                        </marker>
+                        <marker id="arrowhead-blue" markerWidth="30" markerHeight="30" refX="25" refY="15" orient="auto">
+                            <polygon points="0,0 30,15 0,30" fill="#4bcffa" opacity="0.9"/>
+                        </marker>
+                    </defs>
+                    <path id="route-path" d="" fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
